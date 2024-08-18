@@ -3,13 +3,18 @@ function sortear (){
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
 
+    if (de >= ate) {
+        alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!');
+        return;
+    }
+
     let sorteados = [];
     let numero;
 
     for (let i = 0; i < quantidade; i++){
         numero = obterNumeroAleatorio (de, ate);
 
-        while (sorteados.includes(numeros)) {
+        while (sorteados.includes(numero)) {
             numero = obterNumeroAleatorio (de, ate);
         }
 
@@ -26,15 +31,14 @@ function obterNumeroAleatorio (min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function alterarStatusBotao () {
+function alterarStatusBotao() {
     let botao = document.getElementById('btn-reiniciar');
     if (botao.classList.contains('container__botao-desabilitado')) {
-        botao.classList.remove ('container__botao-desabilitado');
-        botao.classList.add ('container_botao');
-
-    } else  {
-        botao.classList.remove ('container_botao');
-        botao.classList.add ('container__botao-desabilitado')
+            botao.classList.remove('container__botao-desabilitado');
+            botao.classList.add('container__botao');
+    } else {
+            botao.classList.remove('container__botao');
+            botao.classList.add('container__botao-desabilitado');
     }
 }
 
